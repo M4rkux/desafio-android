@@ -58,7 +58,7 @@ public class ItinerarioAdapter extends BaseAdapter {
         Itinerario itinerario = lista.get(position);
         viewHolder.tv_titulo.setText(itinerario.getTipo()+":");
         viewHolder.tv_texto.setText(itinerario.getNome() + ", " + itinerario.getEndereco().getRua() +
-                ", nº" + itinerario.getEndereco().getNumero() + ", " + itinerario.getEndereco().getBairro() +
+                ", nº " + itinerario.getEndereco().getNumero() + ", " + itinerario.getEndereco().getBairro() +
                 ", " + itinerario.getEndereco().getCidade() + " - " + itinerario.getEndereco().getEstado());
         return convertView;
     }

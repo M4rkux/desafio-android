@@ -1,10 +1,15 @@
-package com.marcus.desafiomadeira;
+package com.marcus.desafiomadeira.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.marcus.desafiomadeira.R;
 import com.marcus.desafiomadeira.adapter.ItinerarioAdapter;
 import com.marcus.desafiomadeira.controller.JsonFromURL;
 import com.marcus.desafiomadeira.model.Itinerario;
@@ -13,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -60,10 +66,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void montaLista (ArrayList<Itinerario> itinerarioArrayList) {
+    private void montaLista (final ArrayList<Itinerario> itinerarioArrayList) {
         listView = (ListView) findViewById(R.id.listView1);
         ItinerarioAdapter myAdapter = new ItinerarioAdapter(this, itinerarioArrayList);
         listView.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent it = new Intent(getApplicationContext(), Detalhes.class);
+                Itinerario itinerario = itinerarioArrayList.get(position);
+//                it.putExtra("itinerarioItem", itinerario);
+                startActivity(it);
+            }
+        });
     }
 }

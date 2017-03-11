@@ -3,11 +3,13 @@ package com.marcus.desafiomadeira.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by Marcus on 07/03/2017.
  */
 
-public class Itinerario {
+public class Itinerario implements Serializable {
     private String tipo;
     private String nome;
     private String telefone;
