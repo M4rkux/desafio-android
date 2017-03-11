@@ -19,7 +19,7 @@ import java.net.URL;
 public class JsonFromURL extends AsyncTask {
 
     public interface AsyncResponse {
-        void processFinish(String output);
+        void processFinish(JSONObject output);
     }
 
     public AsyncResponse delegate = null;
@@ -74,7 +74,7 @@ public class JsonFromURL extends AsyncTask {
             retorno = json.toString();
         }
 
-        delegate.processFinish(retorno);
+        delegate.processFinish(json);
 
         return retorno;
     }

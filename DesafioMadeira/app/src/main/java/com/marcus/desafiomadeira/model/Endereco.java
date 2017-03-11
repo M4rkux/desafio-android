@@ -1,5 +1,8 @@
 package com.marcus.desafiomadeira.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Marcus on 07/03/2017.
  */
@@ -12,6 +15,29 @@ public class Endereco {
     private String cidade;
     private String latitude;
     private String longitude;
+
+    public Endereco (String rua, int numero, String bairro, String estado, String cidade, String latitude, String longitude) {
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+    public Endereco (JSONObject jsonEndereco) {
+        try {
+            this.rua = jsonEndereco.getString("rua");
+            this.numero = jsonEndereco.getInt("numero");
+            this.bairro = jsonEndereco.getString("bairro");
+            this.estado = jsonEndereco.getString("estado");
+            this.cidade = jsonEndereco.getString("cidade");
+            this.latitude = jsonEndereco.getString("latitude");
+            this.longitude = jsonEndereco.getString("longitude");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**********************************************/
 
