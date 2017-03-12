@@ -5,17 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    tools:context="com.marcus.desafiomadeira.view.Detalhes">
+    android:paddingTop="20dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="5dp"
+    tools:context="com.marcus.desafiomadeira.view.DetalhesActivity">
 
     <TextView
-        android:id="@+id/tv_titulo"
+        android:id="@+id/tv_tipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Entrega"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tv_endereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -37,12 +41,14 @@
         android:layout_marginTop="40dp"/>
 
     <TextView
+        android:id="@+id/tv_referencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Ponto de referência: Farmácia. Casa de Esquina"/>
 
     <TextView
+        android:id="@+id/tv_responsavel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Responsável pela entrega: João (Pai)"

@@ -26,13 +26,6 @@ public class Itinerario implements Serializable {
         }
     }
 
-    public Itinerario (String tipo, String nome, String telefone, Endereco endereco) {
-        this.tipo = tipo;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.endereco = endereco;
-    }
-
     public String getTipo() {
         return tipo;
     }

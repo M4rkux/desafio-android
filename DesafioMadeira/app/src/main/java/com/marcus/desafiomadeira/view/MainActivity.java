@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.marcus.desafiomadeira.R;
 import com.marcus.desafiomadeira.adapter.ItinerarioAdapter;
@@ -18,7 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -76,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent it = new Intent(getApplicationContext(), Detalhes.class);
+                Intent it = new Intent(getApplicationContext(), DetalhesActivity.class);
                 Itinerario itinerario = itinerarioArrayList.get(position);
-//                it.putExtra("itinerarioItem", itinerario);
+                it.putExtra("itinerarioItem", itinerario);
                 startActivity(it);
             }
         });

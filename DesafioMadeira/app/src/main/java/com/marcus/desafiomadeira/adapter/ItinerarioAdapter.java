@@ -64,7 +64,6 @@ public class ItinerarioAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        ViewGroup.LayoutParams layout;
         TextView tv_titulo;
         TextView tv_texto;
     }
