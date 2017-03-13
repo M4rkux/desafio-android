@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        this.setTitle("Início");
+
         new JsonFromURL(new JsonFromURL.AsyncResponse() {
             @Override
             public void processFinish(JSONObject output) {

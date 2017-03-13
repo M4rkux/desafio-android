@@ -6,6 +6,7 @@
     android:layout_marginTop="5dp">
 
     <ImageButton
+        android:id="@+id/bt_entrega"
         android:layout_width="@dimen/box_size"
         android:layout_height="@dimen/box_size"
         android:background="@android:color/black"
@@ -13,6 +14,7 @@
         android:src="@drawable/ic_local_shipment"/>
 
     <ImageButton
+        android:id="@+id/bt_confirmar"
         android:layout_width="@dimen/box_size"
         android:layout_height="@dimen/box_size"
         android:background="@android:color/holo_green_dark"
@@ -21,6 +23,7 @@
         android:src="@drawable/ic_check"/>
 
     <ImageButton
+        android:id="@+id/bt_erro"
         android:layout_width="@dimen/box_size"
         android:layout_height="@dimen/box_size"
         android:layout_marginLeft="220dp"
@@ -40,6 +43,7 @@
         android:src="@drawable/ic_arrow_back"/>
 
     <ImageButton
+        android:id="@+id/bt_telefone"
         android:layout_width="@dimen/box_size"
         android:layout_height="@dimen/box_size"
         android:background="@android:color/holo_blue_light"

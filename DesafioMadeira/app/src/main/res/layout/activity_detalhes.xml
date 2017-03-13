@@ -26,11 +26,12 @@
         android:text="Fulano de tal, Rua teste teste, n 90, Água Verde, Curitiba - PR" />
 
     <Button
+        android:id="@+id/bt_itens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Itens"
         android:textColor="@android:color/white"
-        android:background="@android:color/holo_green_dark"
+        android:background="#009788"
         android:layout_marginTop="40dp"/>
 
     <TextView
