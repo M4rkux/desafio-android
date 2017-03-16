@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ import com.marcus.desafiomadeira.model.Item;
 import com.marcus.desafiomadeira.model.Itinerario;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DetalhesActivity extends AppCompatActivity implements Serializable {
 
@@ -87,13 +90,35 @@ public class DetalhesActivity extends AppCompatActivity implements Serializable 
         btItens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog alertDialog = new AlertDialog.Builder(DetalhesActivity.this).create();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetalhesActivity.this);
                 alertDialog.setTitle("Itens");
-                String message = "";
-                for (Item item: itinerarioItem.getItens()) {
-                    message += item.getTitulo() + " \n";
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DetalhesActivity.this, android.R.layout.select_dialog_singlechoice);
+
+                final List<Item> itens =itinerarioItem.getItens();
+
+                for (Item item: itens) {
+                    arrayAdapter.add(item.getTitulo());
                 }
-                alertDialog.setMessage(message);
+                alertDialog.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AlertDialog.Builder builderInner = new AlertDialog.Builder(DetalhesActivity.this);
+                        builderInner.setTitle(itens.get(which).getTitulo());
+                        String altura = Float.toString(itens.get(which).getAltura() * 100);
+                        String largura = Float.toString(itens.get(which).getLargura() * 100);
+                        String comprimento = Float.toString(itens.get(which).getComprimento() * 100);
+                        String message = "Dimensões: " + altura + " x " + largura + " x " + comprimento + " cm";
+                        message += "\nPeso: " + itens.get(which).getPeso() + " kg";
+                        builderInner.setMessage(message);
+                        builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        builderInner.show();
+                    }
+                });
                 alertDialog.show();
             }
         });
@@ -146,7 +171,82 @@ public class DetalhesActivity extends AppCompatActivity implements Serializable 
                 alertDialog.show();
             }
         });
+
+        btErro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetalhesActivity.this);
+                alertDialog.setTitle("Informe o motivo de não entregar");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DetalhesActivity.this, android.R.layout.select_dialog_singlechoice);
+                arrayAdapter.add("Destinatário ausente");
+                arrayAdapter.add("Endereço incorreto");
+                arrayAdapter.add("Recusa do destinatário");
+                arrayAdapter.add("Veículo quebrado");
+                arrayAdapter.add("Mau tempo");
+                arrayAdapter.add("Avaria");
+                arrayAdapter.add("Extravio");
+                arrayAdapter.add("Outros");
+
+                alertDialog.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AlertDialog.Builder builderInner = new AlertDialog.Builder(DetalhesActivity.this);
+                        builderInner.setTitle(arrayAdapter.getItem(which));
+                        builderInner.setMessage("Ocorrência registrada");
+                        builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        builderInner.show();
+                    }
+                });
+                alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.show();
+            }
+        });
+
+        btEntrega.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetalhesActivity.this);
+                alertDialog.setTitle("Selecione a prova para inserir");
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(DetalhesActivity.this, android.R.layout.select_dialog_singlechoice);
+                arrayAdapter.add("Capturar assinatura");
+                arrayAdapter.add("Adicionar prova fotográfica");
+                arrayAdapter.add("Capturar QR / Código de barras");
+                arrayAdapter.add("Informar ida ao local");
+                arrayAdapter.add("Chegada ao local");
+
+                alertDialog.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AlertDialog.Builder builderInner = new AlertDialog.Builder(DetalhesActivity.this);
+                        builderInner.setTitle(arrayAdapter.getItem(which));
+                        builderInner.setMessage("Prova inserida");
+                        builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        builderInner.show();
+                    }
+                });
+                alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.show();
+            }
+        });
     }
-
-
 }
